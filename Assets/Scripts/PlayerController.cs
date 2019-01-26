@@ -7,11 +7,19 @@ public class PlayerController : NetworkBehaviour
 {
     FirefighterController fc;
     ArsonistController ac;
-    // Start is called before the first frame update
+
+    public Cinemachine.CinemachineVirtualCamera cm;
+
+    bool isFirefighter = false;
+
     void Awake()
     {
         fc = GetComponent<FirefighterController>();
         ac = GetComponent<ArsonistController>();
+    }
+
+    void Start() {
+        cm.enabled = isLocalPlayer;
     }
 
     // Update is called once per frame
@@ -19,9 +27,22 @@ public class PlayerController : NetworkBehaviour
     {
         if (isLocalPlayer) {
             if (Input.GetKeyDown(KeyCode.Return)) {
-                fc.enabled = !fc.enabled;
-                ac.enabled = !ac.enabled;
+                CmdSetFirefighter(!isFirefighter);
             }
         }
+
+        fc.enabled = isFirefighter;
+        ac.enabled = !isFirefighter;
+    }
+
+    [Command]
+    void CmdSetFirefighter(bool isFirefighter) {
+        this.isFirefighter = isFirefighter;
+        RpcSetFirefighter(isFirefighter);
+    }
+
+    [ClientRpc]
+    void RpcSetFirefighter(bool isFirefighter) {
+        this.isFirefighter = isFirefighter;
     }
 }

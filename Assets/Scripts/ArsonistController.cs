@@ -51,12 +51,12 @@ public class ArsonistController : NetworkBehaviour
     void CmdPickupMatches(GameObject g) {
         Destroy(g);
         setMatches(numMatches + 1);
+        TargetSetMatches(connectionToClient, numMatches);
     }
 
     void OnTriggerEnter2D(Collider2D c) {
         if (isLocalPlayer) {
             if (c.CompareTag("Obtainable")) {
-                numMatches += 1;
                 CmdPickupMatches(c.gameObject);
             }
         }
