@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMover : MonoBehaviour {
+public class CharacterMover : NetworkBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	[Range(0,1)]
+	public float speed = 0.3f;
+
+
+	void FixedUpdate () {
+		if (isLocalPlayer == true) {
+			float x = Input.GetAxis("Horizontal") * speed;
+			float y = Input.GetAxis("Vertical") * speed;
+
+			gameObject.transform.Translate(x,y,0);
+		}
 	}
 }
