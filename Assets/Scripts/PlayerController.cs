@@ -8,6 +8,9 @@ public class PlayerController : NetworkBehaviour
     FirefighterController fc;
     ArsonistController ac;
 
+    TMPro.TextMeshProUGUI resource;
+    TMPro.TextMeshProUGUI numResource;
+
     public Cinemachine.CinemachineVirtualCamera cm;
 
     bool isFirefighter = false;
@@ -20,6 +23,10 @@ public class PlayerController : NetworkBehaviour
 
     void Start() {
         cm.enabled = isLocalPlayer;
+        if (isLocalPlayer) {
+            resource = GameObject.Find("Resource").GetComponent<TMPro.TextMeshProUGUI>();
+            numResource = GameObject.Find("NumResource").GetComponent<TMPro.TextMeshProUGUI>();            
+        }
     }
 
     // Update is called once per frame
@@ -29,6 +36,9 @@ public class PlayerController : NetworkBehaviour
             if (Input.GetKeyDown(KeyCode.Return)) {
                 CmdSetFirefighter(!isFirefighter);
             }
+
+            resource.text = isFirefighter ? "Water:" : "Matches:";
+            numResource.text = isFirefighter ? "" + fc.getNumWater() : "" + ac.getNumMatches();
         }
 
         fc.enabled = isFirefighter;

@@ -55,8 +55,8 @@ public class ArsonistController : NetworkBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D c) {
-        if (isLocalPlayer) {
-            if (c.CompareTag("Obtainable")) {
+        if (isLocalPlayer && this.enabled) {
+            if (c.CompareTag("Match")) {
                 CmdPickupMatches(c.gameObject);
             }
         }
@@ -69,5 +69,9 @@ public class ArsonistController : NetworkBehaviour
         if (c.CompareTag("Room")) {
             room = null;
         }
+    }
+
+    public int getNumMatches() {
+        return numMatches;
     }
 }

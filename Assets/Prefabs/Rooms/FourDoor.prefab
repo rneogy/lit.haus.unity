@@ -4238,6 +4238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnDuration: 10
+  burning: 0
 --- !u!95 &4996828627750227246
 Animator:
   serializedVersion: 3
@@ -4289,4 +4290,4 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0

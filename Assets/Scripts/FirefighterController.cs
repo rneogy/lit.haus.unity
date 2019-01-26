@@ -43,7 +43,23 @@ public class FirefighterController : NetworkBehaviour
         numWater = water;
     }
 
+    [Command]
+    void CmdFillWater() {
+        numWater = maxWater;
+        TargetFillWater(connectionToClient);
+    }
+
+    [TargetRpc]
+    void TargetFillWater(NetworkConnection target) {
+        numWater = maxWater;
+    }
+
     void OnTriggerEnter2D(Collider2D c) {
+        if (isLocalPlayer && this.enabled) {
+            if (c.CompareTag("Water")) {
+                CmdFillWater();
+            }
+        }
         if (c.CompareTag("Room")) {
             room = c.GetComponent<RoomController>();
         }
@@ -53,5 +69,9 @@ public class FirefighterController : NetworkBehaviour
         if (c.CompareTag("Room")) {
             room = null;
         }
+    }
+
+    public int getNumWater() {
+        return numWater;
     }
 }

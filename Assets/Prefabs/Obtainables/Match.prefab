@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8818974401726280808}
   - component: {fileID: 6272565003832660715}
   m_Layer: 0
-  m_Name: ObtainableObject
-  m_TagString: Obtainable
+  m_Name: Match
+  m_TagString: Match
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1629a43743ef235408e09f22a769ecde, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8584906, g: 0.7653525, b: 0.7653525, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
