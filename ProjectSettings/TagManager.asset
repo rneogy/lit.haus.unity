@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obtainable
+  - Room
   layers:
   - Default
   - TransparentFX
