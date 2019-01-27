@@ -8,7 +8,11 @@ public class RoomTileController : NetworkBehaviour
 {
 
     public RoomTilePalette TilePalette;
+    [SyncVar]
+    public string TilePaletteName;
     public RoomStructure Structure;
+    [SyncVar]
+    public string RoomStructureName;
     public int RoomSize;
 
     public Tilemap Walls;
@@ -23,6 +27,7 @@ public class RoomTileController : NetworkBehaviour
 
     public GameObject[] Layouts;
     public GameObject LayoutCenter;
+    [SyncVar]
     public int LayoutIndex;
 
     public EdgeCollider2D TopDoor;
@@ -36,6 +41,9 @@ public class RoomTileController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TilePalette = Resources.Load<RoomTilePalette>("RoomTilePalettes/" + TilePaletteName);
+        Structure = Resources.Load<RoomStructure>("RoomStructures/" + RoomStructureName);
+
         DrawTiles();
         if (transform.position == Vector3.zero) {
             Objects = Instantiate(LayoutCenter, transform.position, Quaternion.identity).GetComponentInChildren<Tilemap>();
@@ -117,7 +125,7 @@ public class RoomTileController : NetworkBehaviour
     [Server]
     void SpawnMatch() {
         int h = RoomSize / 2;
-        Vector3Int pos = new Vector3Int(Random.Range(-h, h), Random.Range(-h+1, h-1), 0);
+        Vector3Int pos = new Vector3Int(Random.Range(-h+1, h-1), Random.Range(-h+1, h-1), 0);
         if (Objects.GetTile(pos)) {
             SpawnMatch(); // try again, there's already something there
             return;

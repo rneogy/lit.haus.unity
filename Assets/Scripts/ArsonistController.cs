@@ -12,6 +12,8 @@ public class ArsonistController : NetworkBehaviour
 
     public Color spriteColor;
 
+    private bool dead = false;
+
     void Awake() {
         numMatches = 0;
     }
@@ -30,6 +32,25 @@ public class ArsonistController : NetworkBehaviour
 
     void setMatches(int matches) {
         numMatches = matches;
+    }
+
+    public void Kill() {
+        CmdKill();
+    }
+
+    [Command]
+    void CmdKill() {
+        dead = true;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        RpcKill();
+    }
+
+    [ClientRpc]
+    void RpcKill() {
+        dead = true;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
 
@@ -55,6 +76,9 @@ public class ArsonistController : NetworkBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D c) {
+        if (dead) {
+            return;
+        }
         if (isLocalPlayer && this.enabled) {
             if (c.CompareTag("Match")) {
                 CmdPickupMatches(c.gameObject);
@@ -66,6 +90,9 @@ public class ArsonistController : NetworkBehaviour
     }
 
     void OnTriggerExit2D(Collider2D c) {
+        if (dead) {
+            return;
+        }
         if (c.CompareTag("Room")) {
             if (room != null && c.gameObject == room.gameObject) {
                 room = null;

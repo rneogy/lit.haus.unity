@@ -13,6 +13,11 @@ public class FirefighterController : NetworkBehaviour
 
     private RoomController room;
 
+    public GameObject WaterBulletPrefab;
+    private Vector3 lastPos;
+    private Vector3 facingDirection;
+    public float WaterBulletSpeed = 15f;
+
     void Awake() {
         numWater = maxWater;
     }
@@ -21,12 +26,28 @@ public class FirefighterController : NetworkBehaviour
     {
         GetComponentInChildren<SpriteRenderer>().color = spriteColor;
         if (isLocalPlayer) {
+            if (lastPos != transform.position) {
+                facingDirection = (transform.position - lastPos).normalized;
+            }
+            lastPos = transform.position;
+
             if (Input.GetKeyDown(KeyCode.LeftShift) && numWater > 0 && room) {
                 CmdDouseFire();
             }
             if (Input.GetKeyDown(KeyCode.Space)) {
-                print("water " + numWater);
+                CmdShoot(facingDirection);
             }
+        }
+    }
+
+    [Command]
+    void CmdShoot(Vector3 dir) {
+        if (numWater > 0) {
+            numWater -= 1;
+            TargetSetWater(connectionToClient, numWater);
+            GameObject wb = Instantiate(WaterBulletPrefab, transform.position, Quaternion.identity);
+            wb.GetComponent<Rigidbody2D>().velocity = dir * WaterBulletSpeed;
+            NetworkServer.Spawn(wb);
         }
     }
 
@@ -66,8 +87,11 @@ public class FirefighterController : NetworkBehaviour
     }
 
     void OnTriggerExit2D(Collider2D c) {
+        if (!this.enabled) {
+            return;
+        }
         if (c.CompareTag("Room")) {
-            if (c.gameObject == room.gameObject) {
+            if (room != null && c.gameObject == room.gameObject) {
                 room = null;
             }
         }
