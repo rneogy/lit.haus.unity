@@ -15,7 +15,7 @@ public class GameController : NetworkBehaviour
     void Start()
     {
         print("Spawning room structure. On server? " + isServer);
-        InstantiateRooms(HouseStructures[0]);
+        InstantiateRooms(HouseStructures[Random.Range(0, HouseStructures.Length)]);
     }
 
     void InstantiateRooms(HouseStructure h) {
@@ -27,6 +27,7 @@ public class GameController : NetworkBehaviour
                 RoomTileController rtc = room.GetComponent<RoomTileController>();
                 rtc.TilePalette = TilePalettes[Random.Range(0, TilePalettes.Length)];
                 rtc.Structure = rs;
+                rtc.LayoutIndex = Random.Range(0, rtc.Layouts.Length);
                 NetworkServer.Spawn(room);
             }
         }

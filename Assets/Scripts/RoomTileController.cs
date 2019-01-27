@@ -13,9 +13,27 @@ public class RoomTileController : MonoBehaviour
     public Tilemap Walls;
     public Tilemap Floor;
 
+    public GameObject[] Layouts;
+    public GameObject LayoutCenter;
+    public int LayoutIndex;
+
+    public EdgeCollider2D TopDoor;
+    public EdgeCollider2D RightDoor;
+    public EdgeCollider2D BottomDoor;
+    public EdgeCollider2D LeftDoor;
+
     // Start is called before the first frame update
     void Start()
     {
+        DrawTiles();
+        if (transform.position == Vector3.zero) {
+            Instantiate(LayoutCenter, transform.position, Quaternion.identity);
+        } else {
+            Instantiate(Layouts[LayoutIndex], transform.position, Quaternion.identity);
+        }
+    }
+
+    public void DrawTiles() {
         int h = RoomSize/2;
         for (int y=0; y < RoomSize; y++) {
             for (int x=0; x < RoomSize; x++) {
@@ -49,26 +67,26 @@ public class RoomTileController : MonoBehaviour
         }
 
         if (Structure.TopDoor) {
+            TopDoor.enabled = false;
             Walls.SetTile(new Vector3Int(0, h-1, 0), null);
             Walls.SetTile(new Vector3Int(-1, h-1, 0), null);
         }
         if (Structure.BottomDoor) {
+            BottomDoor.enabled = false;
             Walls.SetTile(new Vector3Int(0, -h, 0), null);
             Walls.SetTile(new Vector3Int(-1, -h, 0), null);
         }
         if (Structure.RightDoor) {
+            RightDoor.enabled = false;
             Walls.SetTile(new Vector3Int(h-1, 0, 0), null);
             Walls.SetTile(new Vector3Int(h-1, -1, 0), null);
         }
         if (Structure.LeftDoor) {
+            LeftDoor.enabled = false;
             Walls.SetTile(new Vector3Int(-h, 0, 0), null);
             Walls.SetTile(new Vector3Int(-h, -1, 0), null);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

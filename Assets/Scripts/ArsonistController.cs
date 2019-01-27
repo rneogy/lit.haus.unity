@@ -67,7 +67,7 @@ public class ArsonistController : NetworkBehaviour
 
     void OnTriggerExit2D(Collider2D c) {
         if (c.CompareTag("Room")) {
-            if (c.gameObject == room.gameObject) {
+            if (room != null && c.gameObject == room.gameObject) {
                 room = null;
             }
         }
