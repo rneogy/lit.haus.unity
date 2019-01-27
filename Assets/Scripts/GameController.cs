@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GameController : NetworkBehaviour
+public class GameController : MonoBehaviour
 {
     public RoomTilePalette[] TilePalettes;
     public HouseStructure[] HouseStructures;
@@ -12,9 +12,13 @@ public class GameController : NetworkBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-        print("Spawning room structure. On server? " + isServer);
+    // void Start()
+    // {
+    //     print("Spawning room structure. On server? " + isServer);
+    //     InstantiateRooms(HouseStructures[Random.Range(0, HouseStructures.Length)]);
+    // }
+
+    public void InstantiateRooms() {
         InstantiateRooms(HouseStructures[Random.Range(0, HouseStructures.Length)]);
     }
 

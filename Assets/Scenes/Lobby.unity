@@ -205,6 +205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 11402578, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
+      propertyPath: m_Text
+      value: lit.haus
+      objectReference: {fileID: 0}
     - target: {fileID: 11465630, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
       propertyPath: m_Text
       value: 
@@ -224,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
       propertyPath: m_GamePlayerPrefab
       value: 
-      objectReference: {fileID: 146, guid: da53461e5f84fd040b810a0a7e13cd29, type: 3}
+      objectReference: {fileID: 148, guid: da53461e5f84fd040b810a0a7e13cd29, type: 3}
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
       propertyPath: m_SpawnPrefabs.Array.data[0]
       value: 
@@ -251,6 +255,14 @@ PrefabInstance:
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
       propertyPath: m_LobbyScene
       value: Lobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
+      propertyPath: m_MinPlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
+      propertyPath: m_CustomConfig
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22402218, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -350,3 +362,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
+--- !u!1 &932778613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 155310, guid: c0978251ff7b10d4fb954a4b56acd9f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 932778612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &932778614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932778613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f716e505922434ea5ecd04d872d24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TilePalettes:
+  - {fileID: 11400000, guid: becdd72d039831046b914024182525f7, type: 2}
+  - {fileID: 11400000, guid: 39da6893cb6c03f44a17606904cac3a1, type: 2}
+  - {fileID: 11400000, guid: 75b5da0bb89cf3446b2c5a4ec4ace5d3, type: 2}
+  HouseStructures:
+  - {fileID: 11400000, guid: 81dfa11c409d7de4bb6bbbc7c968220a, type: 2}
+  - {fileID: 11400000, guid: 6bc938d9286c2f143b7d1937481f1d13, type: 2}
+  RoomWidth: 10
+  roomPrefab: {fileID: 3067776098634568370, guid: 5aa10f64f52ac1f46b54bcda537ccfce,
+    type: 3}

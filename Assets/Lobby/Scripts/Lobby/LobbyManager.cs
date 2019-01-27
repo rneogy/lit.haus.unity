@@ -331,6 +331,15 @@ namespace Prototype.NetworkLobby
 
             if (_lobbyHooks)
                 _lobbyHooks.OnLobbyServerSceneLoadedForPlayer(this, lobbyPlayer, gamePlayer);
+            
+
+            GetComponent<GameController>().InstantiateRooms();
+            
+            if (lobbyPlayer.GetComponent<LobbyPlayer>().isFirefighter) {
+                gamePlayer.GetComponent<CorePlayerController>().SetFirefighter(true);
+            } else {
+                gamePlayer.transform.Translate(Random.Range(-9,9), Random.Range(-9,9), 0);
+            }
 
             return true;
         }
@@ -346,8 +355,10 @@ namespace Prototype.NetworkLobby
 					allready &= lobbySlots[i].readyToBegin;
 			}
 
-			if(allready)
+			if(allready) {
+                (lobbySlots[Random.Range(0, numPlayers)] as LobbyPlayer).isFirefighter = true;
 				StartCoroutine(ServerCountdownCoroutine());
+            }
         }
 
         public IEnumerator ServerCountdownCoroutine()

@@ -15,7 +15,6 @@ public class CorePlayerController : NetworkBehaviour
 
     TMPro.TextMeshProUGUI resource;
     TMPro.TextMeshProUGUI numResource;
-
     bool isFirefighter = false;
 
     private Animator animator;
@@ -33,10 +32,21 @@ public class CorePlayerController : NetworkBehaviour
     void Start() {
         if (isLocalPlayer) {
             resource = GameObject.Find("Resource").GetComponent<TMPro.TextMeshProUGUI>();
-            numResource = GameObject.Find("NumResource").GetComponent<TMPro.TextMeshProUGUI>();            
+            numResource = GameObject.Find("NumResource").GetComponent<TMPro.TextMeshProUGUI>();
+
+            Invoke("fkthis", 1);
         } else {
             Destroy(cam);
         }
+    }
+
+    void fkthis() {
+        CmdGetFirefighter();
+    }
+
+    [Command]
+    void CmdGetFirefighter() {
+        RpcSetFirefighter(isFirefighter);
     }
 
     // Update is called once per frame
@@ -53,6 +63,12 @@ public class CorePlayerController : NetworkBehaviour
 
         fc.enabled = isFirefighter;
         ac.enabled = !isFirefighter;
+
+        if (isFirefighter) {
+            animator.runtimeAnimatorController = FirefighterAnimator;
+        } else {
+            animator.runtimeAnimatorController = NinjaAnimator;
+        }
 
 
         float x = rb2d.velocity.x;
@@ -99,6 +115,16 @@ public class CorePlayerController : NetworkBehaviour
 
     [ClientRpc]
     void RpcSetFirefighter(bool isFirefighter) {
+        this.isFirefighter = isFirefighter;
+        if (isFirefighter) {
+            animator.runtimeAnimatorController = FirefighterAnimator;
+        } else {
+            animator.runtimeAnimatorController = NinjaAnimator;
+        }
+    }
+
+    [Server]
+    public void SetFirefighter(bool isFirefighter) {
         this.isFirefighter = isFirefighter;
         if (isFirefighter) {
             animator.runtimeAnimatorController = FirefighterAnimator;

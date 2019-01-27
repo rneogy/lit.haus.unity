@@ -403,6 +403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ServerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9176295035431164514, guid: c19cf6946e9b151479932c9ab4ae5c1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9176295035431164519, guid: c19cf6946e9b151479932c9ab4ae5c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
