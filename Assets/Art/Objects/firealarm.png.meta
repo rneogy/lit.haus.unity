@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4d9ca7d5409f091429c4f1e8dd53d69c
+guid: 664f04e24c21f0f42a3811d4b63438a0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: telly_0
-    21300002: telly_1
-    21300004: telly_2
+    21300000: firealarm_0
+    21300002: firealarm_1
+    21300004: firealarm_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -87,7 +87,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: telly_0
+      name: firealarm_0
       rect:
         serializedVersion: 2
         x: 0
@@ -101,13 +101,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fce57bda56fd0d44b95ec967a3620e70
+      spriteID: 39014e1f59cefe74bb60fa7dc6eb8b3f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: telly_1
+      name: firealarm_1
       rect:
         serializedVersion: 2
         x: 32
@@ -121,13 +121,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04eb942b8a6c023449c0784860e01e2e
+      spriteID: 728c78cc57147084989e61040b07a42a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: telly_2
+      name: firealarm_2
       rect:
         serializedVersion: 2
         x: 64
@@ -141,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 622ad83adb3994f408e636b1eaf5a28e
+      spriteID: 8b94d5864bb78104c87c5f20a32480b6
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f0c3e00890f545841b40022bd32728cc
+    spriteID: b30bd578d8c092249bf81e4e86c51587
     vertices: []
     indices: 
     edges: []
