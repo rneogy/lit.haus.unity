@@ -15,12 +15,13 @@ public class PlayerController : NetworkBehaviour
 
     bool isFirefighter = false;
 
+    private Animator animator;
+
     void Awake()
     {   
-        if (!isLocalPlayer) {
-        }
         fc = GetComponent<FirefighterController>();
         ac = GetComponent<ArsonistController>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Start() {
@@ -40,10 +41,14 @@ public class PlayerController : NetworkBehaviour
 
             resource.text = isFirefighter ? "Water:" : "Matches:";
             numResource.text = isFirefighter ? "" + fc.getNumWater() : "" + ac.getNumMatches();
+            
+            animator.SetFloat("xVel", Input.GetAxis("Horizontal"));
+            animator.SetFloat("yVel", Input.GetAxis("Vertical"));
         }
 
         fc.enabled = isFirefighter;
         ac.enabled = !isFirefighter;
+
     }
 
     [Command]
