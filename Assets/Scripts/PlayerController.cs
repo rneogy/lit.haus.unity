@@ -8,6 +8,9 @@ public class PlayerController : NetworkBehaviour
     FirefighterController fc;
     ArsonistController ac;
 
+    public RuntimeAnimatorController NinjaAnimator;
+    public RuntimeAnimatorController FirefighterAnimator;
+
     public GameObject cam;
 
     TMPro.TextMeshProUGUI resource;
@@ -16,18 +19,23 @@ public class PlayerController : NetworkBehaviour
     bool isFirefighter = false;
 
     private Animator animator;
+    private Rigidbody2D rb2d;
+    private string face = "front";
 
     void Awake()
     {   
         fc = GetComponent<FirefighterController>();
         ac = GetComponent<ArsonistController>();
         animator = GetComponentInChildren<Animator>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     void Start() {
         if (isLocalPlayer) {
             resource = GameObject.Find("Resource").GetComponent<TMPro.TextMeshProUGUI>();
             numResource = GameObject.Find("NumResource").GetComponent<TMPro.TextMeshProUGUI>();            
+        } else {
+            Destroy(cam);
         }
     }
 
@@ -41,14 +49,46 @@ public class PlayerController : NetworkBehaviour
 
             resource.text = isFirefighter ? "Water:" : "Matches:";
             numResource.text = isFirefighter ? "" + fc.getNumWater() : "" + ac.getNumMatches();
-            
-            animator.SetFloat("xVel", Input.GetAxis("Horizontal"));
-            animator.SetFloat("yVel", Input.GetAxis("Vertical"));
         }
 
         fc.enabled = isFirefighter;
         ac.enabled = !isFirefighter;
 
+
+        float x = rb2d.velocity.x;
+        float y = rb2d.velocity.y;
+
+        if (x < 0) {
+            if (y < x) {
+                animator.Play("front_walk");
+                face = "front";
+            } else if (y > -x) {
+                animator.Play("back_walk");
+                face = "back";
+            } else {
+                animator.Play("left_walk");
+                face = "left";
+            }
+        } else if (x > 0) {
+            if (y < -x) {
+                animator.Play("front_walk");
+                face = "front";
+            } else if (y > x) {
+                animator.Play("back_walk");
+                face = "back";
+            } else {
+                animator.Play("right_walk");
+                face = "right";
+            }
+        } else if (y > 0) {
+            animator.Play("back_walk");
+            face = "back";
+        } else if (y < 0) {
+            animator.Play("front_walk");
+            face = "front";
+        } else {
+            animator.Play(face + "_idle");
+        }
     }
 
     [Command]
@@ -60,5 +100,10 @@ public class PlayerController : NetworkBehaviour
     [ClientRpc]
     void RpcSetFirefighter(bool isFirefighter) {
         this.isFirefighter = isFirefighter;
+        if (isFirefighter) {
+            animator.runtimeAnimatorController = FirefighterAnimator;
+        } else {
+            animator.runtimeAnimatorController = NinjaAnimator;
+        }
     }
 }

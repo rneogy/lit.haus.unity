@@ -299,7 +299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilePalette: {fileID: 11400000, guid: becdd72d039831046b914024182525f7, type: 2}
+  TilePaletteName: 
   Structure: {fileID: 11400000, guid: b88748bcb6ca35843b8c240d122afe27, type: 2}
+  RoomStructureName: 
   RoomSize: 10
   Walls: {fileID: 2459820159691500698}
   Floor: {fileID: 7354933246428630011}
@@ -954,8 +956,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -4.8, y: 1}
-  - {x: -4.8, y: 4.8}
-  - {x: -1, y: 4.8}
+  - {x: -4.8, y: 4.5}
+  - {x: -1, y: 4.5}
 --- !u!68 &4647484631492409358
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -973,8 +975,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 4.8, y: 1}
-  - {x: 4.8, y: 4.8}
-  - {x: 1, y: 4.8}
+  - {x: 4.8, y: 4.5}
+  - {x: 1, y: 4.5}
 --- !u!1 &8837452298595446302
 GameObject:
   m_ObjectHideFlags: 0

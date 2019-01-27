@@ -10,8 +10,6 @@ public class ArsonistController : NetworkBehaviour
 
     private RoomController room;
 
-    public Color spriteColor;
-
     private bool dead = false;
 
     void Awake() {
@@ -19,7 +17,6 @@ public class ArsonistController : NetworkBehaviour
     }
 
     void Update () {
-        GetComponentInChildren<SpriteRenderer>().color = spriteColor;
         if (isLocalPlayer) {
             if (Input.GetKeyDown(KeyCode.LeftShift) && numMatches > 0 && room) {
                 CmdSetOnFire();

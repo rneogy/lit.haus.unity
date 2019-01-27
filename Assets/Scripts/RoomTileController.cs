@@ -61,7 +61,9 @@ public class RoomTileController : NetworkBehaviour
         for (int y=0; y < RoomSize; y++) {
             for (int x=0; x < RoomSize; x++) {
                 Vector3Int pos = new Vector3Int(x-h,y-h,0);
-                Floor.SetTile(pos, TilePalette.Floor);
+                if (y != RoomSize-1) {
+                    Floor.SetTile(pos, TilePalette.Floor);
+                }
 
                 if (x == 0) {
                     if (y == 0) {
@@ -125,7 +127,7 @@ public class RoomTileController : NetworkBehaviour
     [Server]
     void SpawnMatch() {
         int h = RoomSize / 2;
-        Vector3Int pos = new Vector3Int(Random.Range(-h+1, h-1), Random.Range(-h+1, h-1), 0);
+        Vector3Int pos = new Vector3Int(Random.Range(-h+1, h-1), Random.Range(-h+2, h-2), 0);
         if (Objects.GetTile(pos)) {
             SpawnMatch(); // try again, there's already something there
             return;

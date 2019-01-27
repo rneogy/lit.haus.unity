@@ -5,16 +5,21 @@ using UnityEngine.Networking;
 
 public class CharacterMover : NetworkBehaviour {
 
-	[Range(0,1)]
-	public float speed = 0.3f;
+	public float speed = 2f;
+
+	private Rigidbody2D rb2d;
+
+	void Awake() {
+		rb2d = GetComponent<Rigidbody2D>();
+	}
 
 
 	void FixedUpdate () {
 		if (isLocalPlayer == true) {
-			float x = Input.GetAxis("Horizontal") * speed;
-			float y = Input.GetAxis("Vertical") * speed;
+			float x = Input.GetAxis("Horizontal");
+			float y = Input.GetAxis("Vertical");
 
-			gameObject.transform.Translate(x,y,0);
+			rb2d.velocity = new Vector2(x,y) * speed;
 		}
 	}
 }

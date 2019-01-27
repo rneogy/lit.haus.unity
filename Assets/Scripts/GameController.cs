@@ -21,7 +21,7 @@ public class GameController : NetworkBehaviour
     void InstantiateRooms(HouseStructure h) {
         for (int i = 0; i < h.size; i++) {
             for (int j = 0; j < h.size; j++) {
-                Vector2 pos = new Vector2(j-(int)(h.size/2), (int)(h.size/2)-i) * RoomWidth;
+                Vector2 pos = new Vector2(j-(int)(h.size/2), (int)(h.size/2)-i) * new Vector2(RoomWidth, RoomWidth-1);
                 RoomStructure rs = h.roomStructures[i*h.size + j];
                 GameObject room = Instantiate(roomPrefab, pos, Quaternion.identity);
                 RoomTileController rtc = room.GetComponent<RoomTileController>();

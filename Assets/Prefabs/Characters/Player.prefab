@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 1757458167
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27a3f35a03bd84f46b4312e769391526, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ed263b674360b14f887978396e1e7e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,7 +90,7 @@ Animator:
   m_GameObject: {fileID: 28}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b33b550ad47d5741b7119ea2be8a21b, type: 2}
+  m_Controller: {fileID: 9100000, guid: d59cee25d913bdd4e8da685dff8e3112, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
+  m_TransformSyncMode: 2
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21082c7bc2376b443ab388e23b925883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.12
+  speed: 5
 --- !u!58 &146
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -236,14 +236,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d35ac9a488409c4e99ff98025d29cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteColor: {r: 1, g: 0.7057102, b: 0.7028302, a: 1}
 --- !u!114 &305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992748e499582724487461a8da33b487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWater: 5
-  spriteColor: {r: 0.5801887, g: 1, b: 0.95496184, a: 1}
+  maxWater: 10
   WaterBulletPrefab: {fileID: 6029548988002962718, guid: 8cc12505808b0fe408738554b5b24c52,
     type: 3}
   WaterBulletSpeed: 15
@@ -286,6 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a72921e8405b7459aad7cfd9391e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NinjaAnimator: {fileID: 9100000, guid: d59cee25d913bdd4e8da685dff8e3112, type: 2}
+  FirefighterAnimator: {fileID: 9100000, guid: 4b33b550ad47d5741b7119ea2be8a21b, type: 2}
   cam: {fileID: 519420028}
 --- !u!1 &519420028
 GameObject:
@@ -346,7 +346,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 2.8645835
+  orthographic size: 2.84375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

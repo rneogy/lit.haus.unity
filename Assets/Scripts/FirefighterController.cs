@@ -9,8 +9,6 @@ public class FirefighterController : NetworkBehaviour
     public int maxWater = 5;
     private int numWater;
 
-    public Color spriteColor;
-
     private RoomController room;
 
     public GameObject WaterBulletPrefab;
@@ -24,7 +22,6 @@ public class FirefighterController : NetworkBehaviour
 
     void Update()
     {
-        GetComponentInChildren<SpriteRenderer>().color = spriteColor;
         if (isLocalPlayer) {
             if (lastPos != transform.position) {
                 facingDirection = (transform.position - lastPos).normalized;
@@ -75,16 +72,27 @@ public class FirefighterController : NetworkBehaviour
         numWater = maxWater;
     }
 
+    [Command]
+    void CmdPickupMatches(GameObject g) {
+        Destroy(g);
+    }
+    
     void OnTriggerEnter2D(Collider2D c) {
         if (isLocalPlayer && this.enabled) {
             if (c.CompareTag("Water")) {
                 CmdFillWater();
             }
         }
+        if (isLocalPlayer && this.enabled) {
+            if (c.CompareTag("Match")) {
+                CmdPickupMatches(c.gameObject);
+            }
+        }
         if (c.CompareTag("Room")) {
             room = c.GetComponent<RoomController>();
         }
     }
+
 
     void OnTriggerExit2D(Collider2D c) {
         if (!this.enabled) {
