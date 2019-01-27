@@ -83,6 +83,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 75b5da0bb89cf3446b2c5a4ec4ace5d3, type: 2}
   HouseStructures:
   - {fileID: 11400000, guid: 81dfa11c409d7de4bb6bbbc7c968220a, type: 2}
+  - {fileID: 11400000, guid: 6bc938d9286c2f143b7d1937481f1d13, type: 2}
   RoomWidth: 10
   roomPrefab: {fileID: 3067776098634568370, guid: 5aa10f64f52ac1f46b54bcda537ccfce,
     type: 3}
