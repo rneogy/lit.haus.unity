@@ -316,6 +316,8 @@ MonoBehaviour:
   - {fileID: 8391668764185969205, guid: f2374e3932ccc7042b4cef651a9487b9, type: 3}
   - {fileID: 5014062042904476926, guid: 9149acca77d4fd04a9e3f926a35acc76, type: 3}
   - {fileID: 354616743288879386, guid: 47bdc80309459ce4daa4345dd88387a7, type: 3}
+  - {fileID: 3811034914916403596, guid: c38c82a12dce78b48922c8dc2b74f37e, type: 3}
+  - {fileID: 3811034914916403596, guid: c9f8dc41c696b0a44a6a7e6232d6a3f9, type: 3}
   LayoutCenter: {fileID: 446496394784423727, guid: 854a0a10394332c4c92c00676000617a,
     type: 3}
   LayoutIndex: 0
