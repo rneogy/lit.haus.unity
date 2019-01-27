@@ -6,6 +6,8 @@ using UnityEngine;
 public class RoomStructure : ScriptableObject
 {
 
-    public GameObject[] rooms;
-    public int length;
+    public bool TopDoor;
+    public bool RightDoor;
+    public bool BottomDoor;
+    public bool LeftDoor;
 }

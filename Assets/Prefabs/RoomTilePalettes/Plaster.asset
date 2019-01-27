@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f6b3eab6a7d0b4592116f42227c77a, type: 3}
+  m_Name: Plaster
+  m_EditorClassIdentifier: 
+  Floor: {fileID: 11400000, guid: 4a638d9ae41bdc94abcd666d0e9b939f, type: 2}
+  RightWall: {fileID: 11400000, guid: 160f20791af5491449d7b58fef93fc14, type: 2}
+  LeftWall: {fileID: 11400000, guid: d97917e0b51babc40bce9c285804dec9, type: 2}
+  TopWall: {fileID: 11400000, guid: 5f7670f2426427b4f96b5ae37f553aee, type: 2}
+  BottomWall: {fileID: 11400000, guid: b844ba4b0358504498cacafe65d60dd9, type: 2}
+  TopRight: {fileID: 11400000, guid: c6be7868af754f04bb1311b6c485e890, type: 2}
+  BottomRight: {fileID: 11400000, guid: ca793ac72277fe344af01319e5c2e712, type: 2}
+  BottomLeft: {fileID: 11400000, guid: 704e667c3e8507447a91915561afc494, type: 2}
+  TopLeft: {fileID: 11400000, guid: dddf05186f9172540993c136661cc295, type: 2}

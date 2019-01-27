@@ -67,7 +67,9 @@ public class FirefighterController : NetworkBehaviour
 
     void OnTriggerExit2D(Collider2D c) {
         if (c.CompareTag("Room")) {
-            room = null;
+            if (c.gameObject == room.gameObject) {
+                room = null;
+            }
         }
     }
 

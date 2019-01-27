@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f6b3eab6a7d0b4592116f42227c77a, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  Floor: {fileID: 11400000, guid: 30d8a7c76de47234d8f259c55f95de56, type: 2}
+  RightWall: {fileID: 11400000, guid: d6895346578418747bc857fcbd8bad9a, type: 2}
+  LeftWall: {fileID: 11400000, guid: a8fed30f4c8aaf448b878c0b643bb17d, type: 2}
+  TopWall: {fileID: 11400000, guid: d3fdd0dab8ba97841aae8c5415a3112c, type: 2}
+  BottomWall: {fileID: 11400000, guid: 5a4f4e6aec462ee40ac5dc48bda7e226, type: 2}
+  TopRight: {fileID: 11400000, guid: c9e81d755078d2d4681ad3ea7861648f, type: 2}
+  BottomRight: {fileID: 11400000, guid: 4fe89ff6f5a425c488dfea5ce2d8d6e7, type: 2}
+  BottomLeft: {fileID: 11400000, guid: c1ce9eb62c1a0374483c4d9d396ae058, type: 2}
+  TopLeft: {fileID: 11400000, guid: 0a2f496312e14634b9c46b1954448b7d, type: 2}

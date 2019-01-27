@@ -5,30 +5,30 @@ using UnityEngine.Networking;
 
 public class GameController : NetworkBehaviour
 {
-    public RoomStructure[] roomStructures;
-    public float RoomWidth = 21f;
+    public RoomTilePalette[] TilePalettes;
+    public HouseStructure[] HouseStructures;
+    public float RoomWidth = 20f;
+    public GameObject roomPrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
         print("Spawning room structure. On server? " + isServer);
-        InstantiateRooms(roomStructures[0]);
+        InstantiateRooms(HouseStructures[0]);
     }
 
-    void InstantiateRooms(RoomStructure r) {
-        for (int i = 0; i < r.length; i++) {
-            for (int j = 0; j < r.length; j++) {
-                Vector2 pos = new Vector2(j-(int)(r.length/2), (int)(r.length/2)-i) * RoomWidth;
-                GameObject roomPrefab = r.rooms[i*r.length + j];
-                NetworkServer.Spawn(Instantiate(roomPrefab, pos, roomPrefab.transform.rotation));
+    void InstantiateRooms(HouseStructure h) {
+        for (int i = 0; i < h.size; i++) {
+            for (int j = 0; j < h.size; j++) {
+                Vector2 pos = new Vector2(j-(int)(h.size/2), (int)(h.size/2)-i) * RoomWidth;
+                RoomStructure rs = h.roomStructures[i*h.size + j];
+                GameObject room = Instantiate(roomPrefab, pos, Quaternion.identity);
+                RoomTileController rtc = room.GetComponent<RoomTileController>();
+                rtc.TilePalette = TilePalettes[Random.Range(0, TilePalettes.Length)];
+                rtc.Structure = rs;
+                NetworkServer.Spawn(room);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

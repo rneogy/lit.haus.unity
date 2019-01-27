@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f6b3eab6a7d0b4592116f42227c77a, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: 
+  Floor: {fileID: 11400000, guid: 63feea1905f3e1448ba14d96fa5329ed, type: 2}
+  RightWall: {fileID: 11400000, guid: 4542c372b44a2954b802864bef3a11ce, type: 2}
+  LeftWall: {fileID: 11400000, guid: 5323f9222482bef47936d714e030b934, type: 2}
+  TopWall: {fileID: 11400000, guid: cf336cf7ad4c8964d8d2707d36e69498, type: 2}
+  BottomWall: {fileID: 11400000, guid: 40391db2c5fd41d44b21c6f6a26701d1, type: 2}
+  TopRight: {fileID: 11400000, guid: 16971cf05e4fbdb4b805a87c9ed5383b, type: 2}
+  BottomRight: {fileID: 11400000, guid: 35950f7d3bed22247a2c0d65ca4f012a, type: 2}
+  BottomLeft: {fileID: 11400000, guid: 54d47b9ad929b464a82ec66923dbe53d, type: 2}
+  TopLeft: {fileID: 11400000, guid: 37be1a2b0e93c964e91804282c8b7811, type: 2}
