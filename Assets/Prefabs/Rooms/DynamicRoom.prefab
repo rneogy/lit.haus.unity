@@ -312,6 +312,7 @@ MonoBehaviour:
   ChanceToStartWithMatch: 0.3
   Layouts:
   - {fileID: 6620456917031324644, guid: aff4e5f391c04f54aa95496eff208af3, type: 3}
+  - {fileID: 8514801421317969698, guid: a6893e1c3f82ef84c9bd6b823a7079a4, type: 3}
   LayoutCenter: {fileID: 446496394784423727, guid: 854a0a10394332c4c92c00676000617a,
     type: 3}
   LayoutIndex: 0
