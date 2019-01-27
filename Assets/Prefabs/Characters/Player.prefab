@@ -251,6 +251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWater: 5
   spriteColor: {r: 0.5801887, g: 1, b: 0.95496184, a: 1}
+  WaterBulletPrefab: {fileID: 6029548988002962718, guid: 8cc12505808b0fe408738554b5b24c52,
+    type: 3}
+  WaterBulletSpeed: 15
 --- !u!114 &309
 MonoBehaviour:
   m_ObjectHideFlags: 0

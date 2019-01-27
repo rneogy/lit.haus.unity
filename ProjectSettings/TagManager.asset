@@ -8,6 +8,7 @@ TagManager:
   - Room
   - Match
   - Water
+  - Wall
   layers:
   - Default
   - TransparentFX
