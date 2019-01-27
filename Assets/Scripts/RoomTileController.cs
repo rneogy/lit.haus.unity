@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Networking;
 
-public class RoomTileController : MonoBehaviour
+public class RoomTileController : NetworkBehaviour
 {
 
     public RoomTilePalette TilePalette;
@@ -12,6 +13,13 @@ public class RoomTileController : MonoBehaviour
 
     public Tilemap Walls;
     public Tilemap Floor;
+
+    public GameObject MatchPrefab;
+
+    public float MinMatchSpawnInterval = 10f;
+    public float MaxMatchSpawnInterval = 30f;
+    [Range(0f,1f)]
+    public float ChanceToStartWithMatch = 0.3f;
 
     public GameObject[] Layouts;
     public GameObject LayoutCenter;
@@ -22,14 +30,21 @@ public class RoomTileController : MonoBehaviour
     public EdgeCollider2D BottomDoor;
     public EdgeCollider2D LeftDoor;
 
+    private Tilemap Objects;
+
+
     // Start is called before the first frame update
     void Start()
     {
         DrawTiles();
         if (transform.position == Vector3.zero) {
-            Instantiate(LayoutCenter, transform.position, Quaternion.identity);
+            Objects = Instantiate(LayoutCenter, transform.position, Quaternion.identity).GetComponentInChildren<Tilemap>();
         } else {
-            Instantiate(Layouts[LayoutIndex], transform.position, Quaternion.identity);
+            Objects = Instantiate(Layouts[LayoutIndex], transform.position, Quaternion.identity).GetComponentInChildren<Tilemap>();
+        }
+
+        if (isServer) {
+            InstantiateMatches();
         }
     }
 
@@ -88,5 +103,31 @@ public class RoomTileController : MonoBehaviour
         }
     }
 
+    [Server]
+    void InstantiateMatches() {
+        if (Random.Range(0f,1f) < ChanceToStartWithMatch) {
+            SpawnMatch();
+        } else {
+            float timeToNextMatch = Random.Range(MinMatchSpawnInterval, MaxMatchSpawnInterval);
+            Invoke("SpawnMatch", timeToNextMatch);
+        }
+
+    }
+
+    [Server]
+    void SpawnMatch() {
+        int h = RoomSize / 2;
+        Vector3Int pos = new Vector3Int(Random.Range(-h, h), Random.Range(-h+1, h-1), 0);
+        if (Objects.GetTile(pos)) {
+            SpawnMatch(); // try again, there's already something there
+            return;
+        } else {
+            // actually spawn the match
+            NetworkServer.Spawn(Instantiate(MatchPrefab, transform.position + pos, Quaternion.identity));
+
+            float timeToNextMatch = Random.Range(MinMatchSpawnInterval, MaxMatchSpawnInterval);
+            Invoke("SpawnMatch", timeToNextMatch);
+        }
+    }
 
 }
