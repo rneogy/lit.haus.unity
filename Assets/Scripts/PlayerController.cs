@@ -8,21 +8,22 @@ public class PlayerController : NetworkBehaviour
     FirefighterController fc;
     ArsonistController ac;
 
+    public GameObject cam;
+
     TMPro.TextMeshProUGUI resource;
     TMPro.TextMeshProUGUI numResource;
-
-    public Cinemachine.CinemachineVirtualCamera cm;
 
     bool isFirefighter = false;
 
     void Awake()
-    {
+    {   
+        if (!isLocalPlayer) {
+        }
         fc = GetComponent<FirefighterController>();
         ac = GetComponent<ArsonistController>();
     }
 
     void Start() {
-        cm.enabled = isLocalPlayer;
         if (isLocalPlayer) {
             resource = GameObject.Find("Resource").GetComponent<TMPro.TextMeshProUGUI>();
             numResource = GameObject.Find("NumResource").GetComponent<TMPro.TextMeshProUGUI>();            
